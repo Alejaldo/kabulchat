@@ -5,4 +5,11 @@ jQuery(document).on 'turbolinks:load', ->
     disconnected: ->
 
     received: (data) ->
-      $('#onlinenow').append data['users']
+      console.log('Received data: ' + JSON.stringify(data))
+
+      user = data.user.nickname
+
+      if data.online == "on"
+        $('#onlinenow').append("<li>#{user}</li>")
+      else if data.online == "off"
+        $("<li>#{user}</li>").remove()
