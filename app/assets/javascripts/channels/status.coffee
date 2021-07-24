@@ -9,6 +9,8 @@ jQuery(document).on 'turbolinks:load', ->
 
       user = data.user.nickname
 
+      $('#onlinenow').empty()
+
       if data.online == "on"
         $('#onlinenow').append("<li>#{user}</li>")
       else if data.online == "off"
