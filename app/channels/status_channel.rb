@@ -3,17 +3,17 @@ class StatusChannel < ApplicationCable::Channel
     stream_from 'StatusChannel'
 
     if current_user
-      ActionCable.server.broadcast "appearance_channel", { user: current_user.id, online: :on }
-      current_user.online = true
-      current_user.save!
+      current_user.update(online: true)
+      ActionCable.server.broadcast "appearance_channel", { user: current_user, online: :on }
     end
   end
 
   def unsubscribed
+    stream_from 'StatusChannel'
+    
     if current_user
-      ActionCable.server.broadcast "appearance_channel", { user: current_user.id, online: :off }
-      current_user.online = false
-      current_user.save!
+      current_user.update(online: false)
+      ActionCable.server.broadcast "appearance_channel", { user: current_user, online: :off }
     end
   end
 end

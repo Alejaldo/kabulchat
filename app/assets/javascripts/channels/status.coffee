@@ -1,7 +1,8 @@
-App.status = App.cable.subscriptions.create "StatusChannel",
-  connected: ->
+jQuery(document).on 'turbolinks:load', ->
+  App.status = App.cable.subscriptions.create "StatusChannel",
+    connected: ->
 
-  disconnected: ->
+    disconnected: ->
 
-  received: (data) ->
-
+    received: (data) ->
+      $('#onlinenow').append data['users']
