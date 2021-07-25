@@ -8,10 +8,9 @@ jQuery(document).on 'turbolinks:load', ->
       console.log('Received data: ' + JSON.stringify(data))
 
       user = data.user.nickname
-      user_id = data.user.id
-      tag_id = "user-#{user_id}"
+      tag_id = "user-#{data.user.id}"
   
       if data.user.online == false && $("##{tag_id}") != null
         $("##{tag_id}").remove()
-      else if data.user.online == true 
+      else if data.user.online == true && $("##{tag_id}").length == 0
         $('#onlinenow').append(data.html)
