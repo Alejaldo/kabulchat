@@ -3,8 +3,7 @@ class StatusChannel < ApplicationCable::Channel
     stream_from 'StatusChannel'
 
     current_user.update(online: true)
-    html = ApplicationController.render(partial: "users/user", locals: { user: current_user })
-    ActionCable.server.broadcast "StatusChannel", { user: current_user, html: html }
+    ActionCable.server.broadcast "StatusChannel", { user: current_user }
   end
 
   def unsubscribed
