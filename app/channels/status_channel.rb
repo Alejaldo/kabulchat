@@ -1,4 +1,6 @@
 class StatusChannel < ApplicationCable::Channel
+  after_unsubscribe :handle_offline
+
   def subscribed
     stream_from 'StatusChannel'
 
@@ -7,7 +9,11 @@ class StatusChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    current_user.update(online: false)
-    ActionCable.server.broadcast "StatusChannel", { user: current_user }
+  end
+
+  private
+
+  def handle_offline
+    HandleOfflineJob.set(wait_until: Time.zone.now + 5).perform_later(current_user)
   end
 end
