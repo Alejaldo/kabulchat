@@ -24,6 +24,10 @@ createRoomChannel = (roomId) ->
     received: (data) ->
       console.log('Received message: ' + data['message'])
       $('#messages').append data['message']
+      scroll_bottom()
 
     speak: (message) ->
       @perform 'speak', message: message
+    
+    scroll_bottom = () ->
+      $('#messages').scrollTop($('#messages')[0].scrollHeight)
