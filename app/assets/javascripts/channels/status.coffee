@@ -7,7 +7,7 @@ jQuery(document).on 'turbolinks:load', ->
     received: (data) ->
       { id, online, nickname } = data.user
       tag_id = "user-#{id}"
-      html = "<li id=\"user-#{id}\">#{nickname}</li>"
+      html = "<li id='user-#{id}'>#{nickname}</li>"
   
       if !online && $("##{tag_id}") != null
         $("##{tag_id}").remove()
