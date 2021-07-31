@@ -5,8 +5,6 @@ jQuery(document).on 'turbolinks:load', ->
     disconnected: ->
 
     received: (data) ->
-      console.log('Received data: ' + JSON.stringify(data))
-
       { id, online, nickname } = data.user
       tag_id = "user-#{id}"
       html = "<li id=\"user-#{id}\">#{nickname}</li>"

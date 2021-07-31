@@ -5,4 +5,3 @@ jQuery(document).on 'turbolinks:load', ->
     disconnected: ->
 
     received: (data) ->
-      console.log('Presence data: ' + JSON.stringify(data))

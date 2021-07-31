@@ -16,9 +16,7 @@
 //= require_tree .
 
 $(function() {
-  console.log('Document is loaded');
 });
 
 $(document).on("turbolinks:load", function() {
-  console.log('Document is loaded (turbolinks:load)');
 })

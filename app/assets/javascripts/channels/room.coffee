@@ -16,13 +16,10 @@ jQuery(document).on 'turbolinks:load', ->
 createRoomChannel = (roomId) ->
   App.room = App.cable.subscriptions.create {channel: "RoomChannel", roomId: roomId},
     connected: ->
-      console.log('Connected to RoomChannel')
 
     disconnected: ->
-      console.log('Disconnected from RoomChannel')
 
     received: (data) ->
-      console.log('Received message: ' + data['message'])
       $('#messages').append data['message']
       scroll_bottom()
 
