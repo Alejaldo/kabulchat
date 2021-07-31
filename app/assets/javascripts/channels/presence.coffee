@@ -1,9 +1,8 @@
-App.presence = App.cable.subscriptions.create "PresenceChannel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+jQuery(document).on 'turbolinks:load', ->
+  App.presence = App.cable.subscriptions.create "PresenceChannel",
+    connected: ->
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+    disconnected: ->
 
-  received: (data) ->
-    # Called when there's incoming data on the websocket for this channel
+    received: (data) ->
+      console.log('Presence data: ' + JSON.stringify(data))
