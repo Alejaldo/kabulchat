@@ -24,14 +24,10 @@ $ bundle install
 ```
 $ rails db:migrate
 ```
-4. Install `ImageMagick` if you have not one: execute
-```
-$ sudo apt-get install libmagickwand-dev imagemagick
-```
-5. Figure out your Redis URL for production:
+4. Figure out your Redis URL for production:
 ```
 $ heroku addons:add redistogo
 ```
 You will get `redis://redistogo:.../`, copy that to the `.env` file for the `REDISTOGO_URL` parameter
-6. Adjust `config.action_cable.url` and `config.action_cable.allowed_request_origins` in `config/environments/production.rb` file with your Heroku app URL
-7. And don't forget make new commits and push app to your GitHub and Heroku again
+5. Adjust `config.action_cable.url` and `config.action_cable.allowed_request_origins` in `config/environments/production.rb` file with your Heroku app URL
+6. And don't forget make new commits and push app to your GitHub and Heroku again
